@@ -415,10 +415,10 @@ MonoBehaviour:
   upperLimit: 15
   rb: {fileID: 488003911}
   horizontalVelocity: 0
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 74328654}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!70 &488003910
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -566,7 +566,38 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rb: {fileID: 488003911}
-  jumppower: 4
+  jumppower: 10
+--- !u!1 &1069990889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1069990890}
+  m_Layer: 0
+  m_Name: Rail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1069990890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069990889}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.27, y: -0.24, z: -0.1946097}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852678979
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,3 +637,4 @@ SceneRoots:
   - {fileID: 276835753}
   - {fileID: 1852678980}
   - {fileID: 488003913}
+  - {fileID: 1069990890}
