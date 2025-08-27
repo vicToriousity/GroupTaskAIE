@@ -65,17 +65,6 @@ public class Move : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Rail")
-        {
-            railSpeed = horizontalVelocity;
-
-            // could either do the model and eneter a preset angle, or
-        }
-
-    }
-
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);

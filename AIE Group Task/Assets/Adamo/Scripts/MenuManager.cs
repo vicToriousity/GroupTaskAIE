@@ -83,7 +83,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnPlayPress()
     {
-        SceneManager.LoadScene("Placeholder");
+        SceneManager.LoadScene("Frankie");
     }
     public void OnQuitPress()
     {
