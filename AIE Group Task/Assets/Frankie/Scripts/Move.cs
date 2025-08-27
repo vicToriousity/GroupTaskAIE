@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    
-    
+
+
     public float passivemovement = 6f;
     public float speedstart = 9f;
     public float speedlean = 4f;
     public float leanLimit = 6f;
     public float upperLimit = 10f;
-  
+
     private bool oneSecond = true;
-        
+
+    
+      
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float horizontalVelocity;
     [SerializeField] private Transform groundCheck;
@@ -60,6 +62,17 @@ public class Move : MonoBehaviour
         }
 
         
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Rail")
+        {
+            railSpeed = horizontalVelocity;
+
+            // could either do the model and eneter a preset angle, or
+        }
 
     }
 
