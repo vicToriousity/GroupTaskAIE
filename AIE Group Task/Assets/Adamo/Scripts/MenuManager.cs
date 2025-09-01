@@ -87,6 +87,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnQuitPress()
     {
+        Debug.Log("Ragebaited");
         Application.Quit();
     }
     public void OnBackPress()
