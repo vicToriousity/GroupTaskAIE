@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Move : MonoBehaviour
 {
 
+    
 
     public float passivemovement = 6f;
     public float speedstart = 9f;
@@ -17,7 +19,7 @@ public class Move : MonoBehaviour
     
       
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float horizontalVelocity;
+    [SerializeField] public float horizontalVelocity;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
   
@@ -61,11 +63,11 @@ public class Move : MonoBehaviour
             
         }
 
-        
+        //Debug.Log(horizontalVelocity);
 
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         //you slam ur penis imn the car door
