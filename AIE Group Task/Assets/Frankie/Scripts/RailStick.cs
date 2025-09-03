@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Presets;
 using UnityEngine;
 
 public class RailStick : MonoBehaviour
 {
     public Collider2D railCollider;
-    public bool isCurrentlyColliding;
+    public bool railGrind;
+    private float accelTime;
+    private bool pressS;
 
     //scriptrefences, merge atfter
     public Move scriptRefrence;
@@ -39,25 +43,65 @@ public class RailStick : MonoBehaviour
         Debug.Log("enter");
         if (collision.gameObject.CompareTag("Player"))
         {
-            isCurrentlyColliding = true;
+           
+            accelTime = 4.5f/scriptRefrence.horizontalVelocity;
+            //t=s/v
+            //replace 4.5 with wahtever the rail length ends up being
+           
+
             //can add rotate sprite in here if needed
             scriptRefrence.transform.eulerAngles = Vector3.forward * 35;
-            Debug.Log("enter");
+            scriptRefrence.enabled = false;
+            jrScriptRefrence.enabled = false;
+            StartCoroutine("Timer");
+
+
+            //start coroutine to time
+            // grind track checks if exit
+            Debug.Log("enter2");
+            Destroy(railCollider);
         }
     }
-    void OnCollisionStay2D(Collision2D collision)
+
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (railGrind == true && pressS == false)
         {
-            Debug.Log("find player");
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                isCurrentlyColliding = false;
-                Destroy(railCollider);
-                scriptRefrence.rb.AddForce(scriptRefrence.transform.up * (jrScriptRefrence.jumppower+6f), ForceMode2D.Impulse);
-                Debug.Log("s");
-            }
-        }
+            scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, scriptRefrence.rb.velocity.y);
+            // need calculation for speed
+        }        
     }
-   
+
+
+
+    IEnumerator Timer ()
+    {
+        railGrind = true;
+        pressS = false;
+        //Debug.Log("timerstart");
+        yield return new WaitForSeconds(accelTime);
+        railGrind = false;
+        pressS = true;
+        scriptRefrence.enabled = true;
+        jrScriptRefrence.enabled = true;
+    }
 }
+    //void OnCollisionStay2D(Collision2D collision)
+ //   {
+    //    if (collision.gameObject.CompareTag("Player"))
+ //       {
+    //        Debug.Log("find player");
+   //         if (Input.GetKeyDown(KeyCode.S))
+   //         {
+      //          Debug.Log("s");
+      //          isCurrentlyColliding = false;
+    //            Destroy(railCollider);
+     //          scriptRefrence.rb.AddForce(scriptRefrence.transform.up * (jrScriptRefrence.jumppower+6f), ForceMode2D.Impulse);
+      //          Debug.Log("s");
+   //         }
+    //    }
+   // }
+  
+
+   
+
