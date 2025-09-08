@@ -12,6 +12,7 @@ public class Adamo_Score : MonoBehaviour
     public float ComboScore = 0;
     public float Score = 0;
     public float finalTrickCounter = 0;
+    public float cooldown = 0f;
 
 
 
@@ -54,9 +55,10 @@ public class Adamo_Score : MonoBehaviour
         ComboScore = ((TrickCount * finalTrickCounter) * moveScriptReference.horizontalVelocity);
 
 
-        if (Input.GetKeyDown(KeyCode.A) && moveScriptReference.IsGrounded() == false)
+        if (Input.GetKeyDown(KeyCode.A) && moveScriptReference.IsGrounded() == false && cooldown <= 0)
         {
             TrickCount++;
+            cooldown = 0.5f;
         }
 
         if (moveScriptReference.IsGrounded())
@@ -65,6 +67,11 @@ public class Adamo_Score : MonoBehaviour
             TrickCount = 0;
             Score = Score + ComboScore;
             scoreText.text = ("Score: " + Score.ToString("F0"));
+        }
+
+        if (cooldown > 0f)
+        {
+            cooldown -= Time.deltaTime;
         }
     }
 }
