@@ -11,6 +11,7 @@ public class Move : MonoBehaviour
     public float speedlean = 4f;
     public float leanLimit = 6f;
     public float upperLimit = 10f;
+    public float jumppower = 4f;
 
     private bool oneSecond = true;
 
@@ -33,6 +34,12 @@ public class Move : MonoBehaviour
     void Update()
     {
         horizontalVelocity = rb.velocity.x;
+        if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
+        {
+
+            rb.AddForce(transform.up * jumppower, ForceMode2D.Impulse);
+
+        }
 
         if (Input.GetKey(KeyCode.D) && IsGrounded())
         {
