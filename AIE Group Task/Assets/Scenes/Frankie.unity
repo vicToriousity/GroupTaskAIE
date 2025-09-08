@@ -408,7 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7954ea1d7ac30f459e9ef816dad2bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedText: {fileID: 1019437954}
   passivemovement: 3
   speedstart: 9
   speedlean: 3
@@ -568,6 +567,54 @@ MonoBehaviour:
     m_Bits: 64
   rb: {fileID: 488003911}
   jumppower: 10
+--- !u!1 &676789625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676789627}
+  - component: {fileID: 676789626}
+  m_Layer: 0
+  m_Name: ScoreHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &676789626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676789625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a40f2eb868be040a38d8e36b60e6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveScriptReference: {fileID: 488003909}
+  speedText: {fileID: 1019437954}
+  scoreText: {fileID: 1869905439}
+  TrickCount: 0
+--- !u!4 &676789627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676789625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.62678, y: -1.1161653, z: -0.48706448}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976225547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,3 +1127,4 @@ SceneRoots:
   - {fileID: 1069990890}
   - {fileID: 976225550}
   - {fileID: 1941789184}
+  - {fileID: 676789627}
