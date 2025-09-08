@@ -78,7 +78,7 @@ public class RailStick : MonoBehaviour
     {
         railGrind = true;
         pressS = false;
-        //Debug.Log("timerstart");
+        Debug.Log(accelTime);
         yield return new WaitForSeconds(accelTime);
         railGrind = false;
         pressS = true;
