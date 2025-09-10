@@ -27,11 +27,11 @@ public class RailStick : MonoBehaviour
     //varC = 20;
     private float varA = 11.472f;
     private float varB = 16.383f;
-    
+
 
     //scriptrefences
     public Move scriptRefrence;
-    
+
 
 
     // Start is called before the first frame update
