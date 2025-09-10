@@ -12,6 +12,8 @@ public class Move : MonoBehaviour
     public float leanLimit = 6f;
     public float upperLimit = 10f;
     public float jumppower = 4f;
+    public GameObject GrindRail;
+    public GameObject railSpawn;
 
     private bool oneSecond = true;
 
@@ -39,6 +41,12 @@ public class Move : MonoBehaviour
 
             rb.AddForce(transform.up * jumppower, ForceMode2D.Impulse);
 
+        }
+
+        else if (Input.GetKeyDown(KeyCode.S) && !IsGrounded())
+        {
+            Vector3 railSpawn = transform.position;
+            Instantiate(GrindRail, railSpawn, Quaternion.identity);
         }
 
         if (Input.GetKey(KeyCode.D) && IsGrounded())

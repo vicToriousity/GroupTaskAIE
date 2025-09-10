@@ -59,6 +59,7 @@ public class RailStick : MonoBehaviour
             railCollider.enabled = false;
             railGrind = false;
             pressS = true;
+            scriptRefrence.enabled = true;
         }
     }
 
