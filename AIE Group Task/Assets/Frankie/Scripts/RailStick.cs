@@ -8,19 +8,28 @@ using UnityEngine.UIElements;
 
 public class RailStick : MonoBehaviour
 {
+    //basic stuff
     public Collider2D railCollider;
     public bool railGrind;
-   
-    private bool pressS;
+
+    //jump off rail
+    public float railJumpBurstRight = 0f;
+    public float railJumpBurstUp = 500f;
+
+
+    //combo stuff
+    private bool pressA;
+    private bool starting = true;
+    public int comboScore = 0;
 
     //maths
     //angle is 35
-    public float varC = 20;
+    //varC = 20;
     private float varA = 11.472f;
     private float varB = 16.383f;
-    private float accelTime;
+    
 
-    //scriptrefences, merge atfter
+    //scriptrefences
     public Move scriptRefrence;
     
 
@@ -31,25 +40,25 @@ public class RailStick : MonoBehaviour
         railCollider = GetComponent<Collider2D>();
     }
 
-    void OnCollisionEnter2D (Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("enter");
         if (collision.gameObject.CompareTag("Player"))
         {
-           
-            
+
+
             //t=s/v
-     
+
 
             //can add rotate sprite in here if needed
-           
+
             scriptRefrence.enabled = false;
             railGrind = true;
-            
+
             //start coroutine to time
             // grind track checks if exit
             Debug.Log("enter2");
-            
+
         }
     }
     void OnCollisionExit2D(Collision2D collision)
@@ -58,39 +67,63 @@ public class RailStick : MonoBehaviour
         {
             railCollider.enabled = false;
             railGrind = false;
-            pressS = true;
+            Debug.Log(comboScore);
             scriptRefrence.enabled = true;
         }
     }
 
     private void Update()
     {
-        if (railGrind == true && pressS == false)
+        if (railGrind == true)
         {
            
-            //scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, scriptRefrence.rb.velocity.y);
             
             
             scriptRefrence.rb.velocity = new Vector2(varB, varA);
-            // need calculation for speed
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                starting = true;
+                scriptRefrence.enabled = true;
+                scriptRefrence.rb.AddForce(transform.right * railJumpBurstRight, ForceMode2D.Impulse);
+                scriptRefrence.rb.AddForce(transform.up * railJumpBurstUp, ForceMode2D.Impulse);
+                Debug.Log(comboScore);
+                Destroy(railCollider);
+            }
+            
+            if (starting == true && Input.GetKeyDown(KeyCode.A))
+            {
+                starting= false;
+                pressA = true;
+                
+                comboScore += 1;
+
+            }
+
+            if (starting == true && Input.GetKeyDown(KeyCode.D))
+            {
+                starting = false;
+                
+                pressA = false;
+                comboScore += 1;
+            }
+            if(starting == false && Input.GetKeyDown(KeyCode.A) && pressA == false)
+            {
+                
+                pressA = true;
+                comboScore += 1;
+            }
+            if (starting== false && Input.GetKeyDown(KeyCode.D) && pressA == true)
+            {
+                
+                pressA = false;
+                comboScore += 1;
+            }
 
         }        
+      
     }
 
 
-
-    IEnumerator Timer ()
-    {
-        railGrind = true;
-        pressS = false;
-        Debug.Log("Start time");
-        yield return new WaitForSeconds(accelTime);
-        railGrind = false;
-        pressS = true;
-        scriptRefrence.enabled = true;
-        Debug.Log("End time");
-
-    }
 }
    
 
