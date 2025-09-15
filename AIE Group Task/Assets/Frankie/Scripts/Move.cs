@@ -45,8 +45,8 @@ public class Move : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.S) && !IsGrounded())
         {
-            Vector3 railSpawn = transform.position;
-            Instantiate(GrindRail, railSpawn, Quaternion.identity);
+            //Vector3 railSpawn = transform.position;
+            Instantiate(GrindRail, railSpawn.transform.position, Quaternion.identity);
         }
 
         if (Input.GetKey(KeyCode.D) && IsGrounded())
