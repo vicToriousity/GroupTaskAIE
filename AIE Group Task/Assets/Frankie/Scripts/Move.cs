@@ -1,24 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
 
 public class Move : MonoBehaviour
 {
 
-    
 
     public float passivemovement = 6f;
     public float speedstart = 9f;
     public float speedlean = 4f;
     public float leanLimit = 6f;
     public float upperLimit = 10f;
+    public float jumppower = 4f;
+    public GameObject GrindRail;
+    public GameObject railSpawn;
+    //public Transform rbT;
 
     private bool oneSecond = true;
 
     
       
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] public float horizontalVelocity;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -27,7 +30,7 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+       //rbT = rb.transform;
 
     }
 
@@ -35,6 +38,18 @@ public class Move : MonoBehaviour
     void Update()
     {
         horizontalVelocity = rb.velocity.x;
+        if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
+        {
+
+            rb.AddForce(transform.up * jumppower, ForceMode2D.Impulse);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.S) && !IsGrounded())
+        {
+            Vector3 railVector = railSpawn.transform.position;
+            Instantiate(GrindRail, railVector, Quaternion.Euler(new Vector3(0, 0, 35)));
+        }
+          
 
         if (Input.GetKey(KeyCode.D) && IsGrounded())
         {
@@ -63,7 +78,7 @@ public class Move : MonoBehaviour
             
         }
 
-        //Debug.Log(horizontalVelocity);
+        
 
     }
 
