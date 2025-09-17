@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,6 +10,7 @@ public class RailStick : MonoBehaviour
     //basic stuff
     public Collider2D railCollider;
     public bool railGrind;
+    public GameObject playerObject;
 
     //jump off rail
     public float railJumpBurstRight = 0f;
@@ -27,17 +27,19 @@ public class RailStick : MonoBehaviour
     //varC = 20;
     private float varA = 11.472f;
     private float varB = 16.383f;
-    
+
 
     //scriptrefences
     public Move scriptRefrence;
-    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         railCollider = GetComponent<Collider2D>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        scriptRefrence = playerObject.GetComponent<Move>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
