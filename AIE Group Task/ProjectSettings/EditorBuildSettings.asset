@@ -18,4 +18,4 @@ EditorBuildSettings:
     path: Assets/Scenes/Frankie.unity
     guid: 9bf673709bba07747833b2d03f0f95c6
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 30441355e41a9cf4c90b1a4e9acc55b0, type: 3}
