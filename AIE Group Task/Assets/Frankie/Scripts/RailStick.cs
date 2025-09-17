@@ -11,6 +11,7 @@ public class RailStick : MonoBehaviour
     //basic stuff
     public Collider2D railCollider;
     public bool railGrind;
+    public GameObject playerObject;
 
     //jump off rail
     public float railJumpBurstRight = 0f;
@@ -38,6 +39,8 @@ public class RailStick : MonoBehaviour
     void Start()
     {
         railCollider = GetComponent<Collider2D>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        scriptRefrence = playerObject.GetComponent<Move>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
