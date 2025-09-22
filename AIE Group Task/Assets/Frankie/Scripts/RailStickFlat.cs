@@ -8,6 +8,7 @@ public class RailStickFlat : MonoBehaviour
     public Collider2D railCollider;
     public bool railGrind;
     public GameObject playerObject;
+    public GameObject adamObject;
 
     //jump off rail
     public float railJumpBurstRight = 0f;
@@ -18,6 +19,7 @@ public class RailStickFlat : MonoBehaviour
     private bool pressA;
     private bool starting = true;
     public int comboScore = 0;
+    public float finalScore = 0;
 
     //maths
     //angle is 0
@@ -28,6 +30,7 @@ public class RailStickFlat : MonoBehaviour
 
     //scriptrefences
     public Move scriptRefrence;
+    public Adamo_Score aDScore;
 
 
 
@@ -36,7 +39,9 @@ public class RailStickFlat : MonoBehaviour
     {
         railCollider = GetComponent<Collider2D>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
+        adamObject = GameObject.FindGameObjectWithTag("EventSyatumrizz");
         scriptRefrence = playerObject.GetComponent<Move>();
+        aDScore = adamObject.GetComponent<Adamo_Score>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -56,7 +61,7 @@ public class RailStickFlat : MonoBehaviour
 
             //start coroutine to time
             // grind track checks if exit
-            Debug.Log("enter2");
+            
 
         }
     }
@@ -64,9 +69,19 @@ public class RailStickFlat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+          
+          
+            // run math script foir score
+            finalScore = comboScore * scriptRefrence.horizontalVelocity;
+            aDScore.Score = aDScore.Score + finalScore;
+            aDScore.comboCalc = true;
+            Debug.Log("combo" + comboScore);
+            Debug.Log("final " + finalScore);
+            Debug.Log("velocity" + scriptRefrence.horizontalVelocity);
+            finalScore = 0;
+            comboScore = 0;
             railCollider.enabled = false;
             railGrind = false;
-            Debug.Log(comboScore);
             scriptRefrence.enabled = true;
         }
     }
@@ -85,8 +100,8 @@ public class RailStickFlat : MonoBehaviour
                 scriptRefrence.enabled = true;
                 scriptRefrence.rb.AddForce(transform.right * railJumpBurstRight, ForceMode2D.Impulse);
                 scriptRefrence.rb.AddForce(transform.up * railJumpBurstUp, ForceMode2D.Impulse);
-                Debug.Log(comboScore);
-                Destroy(railCollider);
+               
+                
             }
 
             if (starting == true && Input.GetKeyDown(KeyCode.A))

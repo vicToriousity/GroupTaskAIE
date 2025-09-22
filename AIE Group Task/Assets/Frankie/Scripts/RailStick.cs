@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class RailStick : MonoBehaviour
@@ -11,6 +12,7 @@ public class RailStick : MonoBehaviour
     public Collider2D railCollider;
     public bool railGrind;
     public GameObject playerObject;
+    public GameObject adamObject;
 
     //jump off rail
     public float railJumpBurstRight = 0f;
@@ -21,6 +23,8 @@ public class RailStick : MonoBehaviour
     private bool pressA;
     private bool starting = true;
     public int comboScore = 0;
+    public float finalScore = 0;
+    
 
     //maths
     //angle is 35
@@ -31,6 +35,7 @@ public class RailStick : MonoBehaviour
 
     //scriptrefences
     public Move scriptRefrence;
+    public Adamo_Score aDScore;
 
 
 
@@ -40,6 +45,9 @@ public class RailStick : MonoBehaviour
         railCollider = GetComponent<Collider2D>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
         scriptRefrence = playerObject.GetComponent<Move>();
+        adamObject = GameObject.FindGameObjectWithTag("EventSyatumrizz");
+       
+        aDScore = adamObject.GetComponent<Adamo_Score>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -67,9 +75,18 @@ public class RailStick : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            finalScore = comboScore * scriptRefrence.horizontalVelocity;
+            aDScore.Score = aDScore.Score + finalScore;
+
+            Debug.Log("combo" + comboScore);
+            Debug.Log("final " + finalScore);
+            Debug.Log("velocity" + scriptRefrence.horizontalVelocity);
+            finalScore = 0;
+            comboScore = 0;
+            aDScore.comboCalc = true;
             railCollider.enabled = false;
             railGrind = false;
-            Debug.Log(comboScore);
+      
             scriptRefrence.enabled = true;
         }
     }

@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+
 
 public class Move : MonoBehaviour
 {
+    public TMP_Text cooldownText;
 
 
     public float passivemovement = 6f;
@@ -15,7 +18,8 @@ public class Move : MonoBehaviour
     public GameObject GrindRail;
     public GameObject railSpawn;
     public float railCooldown = 1f;
-    //public Transform rbT;
+    public GameObject cooldownObject;
+    public float railCooldownText = 1f;
 
     private bool oneSecond = true;
     private bool cooldownRailSpawn = true;
@@ -30,13 +34,16 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       //rbT = rb.transform;
+        cooldownObject = GameObject.FindGameObjectWithTag("Cooldownfrankie");
+        cooldownText = cooldownObject.GetComponent<TMP_Text>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         horizontalVelocity = rb.velocity.x;
         if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
         {
@@ -60,16 +67,11 @@ public class Move : MonoBehaviour
         {
 
 
-            //transform.Translate(Vector2.right * Time.deltaTime * speedstart);
-           // if (horizontalVelocity < passivemovement) 
-           // {
-               // rb.AddForce(transform.right * passivemovement);  
-                //Debug.Log(horizontalVelocity);
-           // }
+            //transform.Translate(Vector2.right * Time.deltaTime * speedstart);, in loving memory of liv roswarne
+           
 
             if(horizontalVelocity <= upperLimit && oneSecond==true)
             {
-                
                 StartCoroutine("Smallpush");
                 StartCoroutine("Secondtimer");
             }
@@ -90,7 +92,7 @@ public class Move : MonoBehaviour
 
     IEnumerator Smallpush ()
     {
-        //Debug.Log("startcorotine");
+        
         rb.AddForce(transform.right * speedlean, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.75f);
         
@@ -100,7 +102,7 @@ public class Move : MonoBehaviour
     IEnumerator Secondtimer ()
     {
         oneSecond = false;
-        //Debug.Log("timerstart");
+        
         yield return new WaitForSeconds(0.75f);
         oneSecond = true;
     }
@@ -110,7 +112,7 @@ public class Move : MonoBehaviour
         if (cooldownRailSpawn == true)
         {
             cooldownRailSpawn = false;
-            Debug.Log("timerstart");
+            cooldownText.text = ("Cooldown: " + ((railCooldownText -= Time.deltaTime).ToString("F2")));
             yield return new WaitForSeconds(railCooldown);
             cooldownRailSpawn = true;
         }

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6890137975283460208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.30070576, w: 0.953717}
-  m_LocalPosition: {x: 5.49, y: -2.83, z: 0}
+  m_LocalPosition: {x: 7.4395, y: -1.465, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 5.1854544, y: 0.9347722}
+  m_Size: {x: 14.989368, y: 0.9347722}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,10 +101,13 @@ MonoBehaviour:
   railCollider: {fileID: 0}
   railGrind: 0
   playerObject: {fileID: 0}
+  adamObject: {fileID: 0}
   railJumpBurstRight: 0
   railJumpBurstUp: 5
   comboScore: 0
+  finalScore: 0
   scriptRefrence: {fileID: 8050556386538825450, guid: 7eb4bb965b4152b439a434de10014d6d, type: 3}
+  aDScore: {fileID: 0}
 --- !u!61 &3818472159810241707
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,11 +145,11 @@ BoxCollider2D:
     border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 5.1854544, y: 0.9347722}
+    newSize: {x: 14.989368, y: 0.9347722}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.305678, y: 1}
+  m_Size: {x: 15, y: 1}
   m_EdgeRadius: 0
