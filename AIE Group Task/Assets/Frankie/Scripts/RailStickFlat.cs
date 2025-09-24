@@ -6,13 +6,13 @@ public class RailStickFlat : MonoBehaviour
 {
     //basic stuff
     public Collider2D railCollider;
-    public bool railGrind;
+    private bool railGrind;
     public GameObject playerObject;
     public GameObject adamObject;
 
     //jump off rail
-    public float railJumpBurstRight = 0f;
-    public float railJumpBurstUp = 5f;
+    public float railJumpBurstRight = 1f;
+    public float railJumpBurstUp = 1f;
 
 
     //combo stuff
@@ -24,8 +24,7 @@ public class RailStickFlat : MonoBehaviour
     //maths
     //angle is 0
     //varC = 20;
-    private float varA = 0f;
-    private float varB = 20f;
+  
 
 
     //scriptrefences
@@ -83,6 +82,7 @@ public class RailStickFlat : MonoBehaviour
             railCollider.enabled = false;
             railGrind = false;
             scriptRefrence.enabled = true;
+            StartCoroutine("destroyRail");
         }
     }
 
@@ -93,13 +93,13 @@ public class RailStickFlat : MonoBehaviour
 
 
 
-            scriptRefrence.rb.velocity = new Vector2(varB, varA);
+            scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity , 0);
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;
                 scriptRefrence.enabled = true;
-                scriptRefrence.rb.AddForce(transform.right * railJumpBurstRight, ForceMode2D.Impulse);
-                scriptRefrence.rb.AddForce(transform.up * railJumpBurstUp, ForceMode2D.Impulse);
+                scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
+                scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
                
                 
             }
@@ -135,5 +135,11 @@ public class RailStickFlat : MonoBehaviour
 
         }
 
+    }
+    IEnumerator destroyRail()
+    {
+
+        yield return new WaitForSeconds(15f);
+        Destroy(this.gameObject);
     }
 }

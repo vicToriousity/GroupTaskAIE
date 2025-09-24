@@ -7,6 +7,9 @@ TagManager:
   - EventSyatumrizz
   - Ground
   - Cooldownfrankie
+  - Rail15
+  - speedDisp
+  - scoreDist
   layers:
   - Default
   - TransparentFX

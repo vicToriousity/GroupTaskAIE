@@ -15,7 +15,9 @@ public class Adamo_Score : MonoBehaviour
     public float finalTrickCounter = 0;
     public float cooldown = 0f;
     public bool comboCalc = false;
-   
+    public GameObject speedTextObj;
+    public GameObject scoreTextObj;
+
     public GameObject playerObject;
     public Move scriptRefrence;
 
@@ -26,6 +28,12 @@ public class Adamo_Score : MonoBehaviour
         
         playerObject = GameObject.FindGameObjectWithTag("Player");
         scriptRefrence = playerObject.GetComponent<Move>();
+
+        speedTextObj = GameObject.FindGameObjectWithTag("speedDisp");
+        speedText = speedTextObj.GetComponent<TMP_Text>();
+
+        scoreTextObj = GameObject.FindGameObjectWithTag("scoreDist");
+        scoreText = scoreTextObj.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
