@@ -10,6 +10,7 @@ TagManager:
   - Rail15
   - speedDisp
   - scoreDist
+  - groundCheck
   layers:
   - Default
   - TransparentFX

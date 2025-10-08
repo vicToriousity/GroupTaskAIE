@@ -4097,6 +4097,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: scoreDist
       objectReference: {fileID: 0}
+    - target: {fileID: 2151784586973107285, guid: de5d4a3e4980e5f4ab7b1d33564896aa, type: 3}
+      propertyPath: m_TagString
+      value: groundCheck
+      objectReference: {fileID: 0}
     - target: {fileID: 2306635381173582956, guid: de5d4a3e4980e5f4ab7b1d33564896aa, type: 3}
       propertyPath: m_Name
       value: Playergood

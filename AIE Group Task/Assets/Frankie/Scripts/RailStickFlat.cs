@@ -55,7 +55,7 @@ public class RailStickFlat : MonoBehaviour
 
             //can add rotate sprite in here if needed
 
-            scriptRefrence.enabled = false;
+            scriptRefrence.rizzGyatt = false;
             railGrind = true;
 
             //start coroutine to time
@@ -81,7 +81,7 @@ public class RailStickFlat : MonoBehaviour
             comboScore = 0;
             railCollider.enabled = false;
             railGrind = false;
-            scriptRefrence.enabled = true;
+            scriptRefrence.rizzGyatt = true;
             StartCoroutine("destroyRail");
         }
     }
@@ -97,7 +97,7 @@ public class RailStickFlat : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;
-                scriptRefrence.enabled = true;
+                scriptRefrence.rizzGyatt = true;
                 scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
                 scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
                

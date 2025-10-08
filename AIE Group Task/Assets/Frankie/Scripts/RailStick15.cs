@@ -56,7 +56,7 @@ public class RailStick15 : MonoBehaviour
 
             //can add rotate sprite in here if needed
 
-            scriptRefrence.enabled = false;
+            scriptRefrence.rizzGyatt = false;
             railGrind = true;
 
             //start coroutine to time
@@ -90,7 +90,7 @@ public class RailStick15 : MonoBehaviour
             comboScore = 0;
             railCollider.isTrigger = true;
             railGrind = false;
-            scriptRefrence.enabled = true;
+            scriptRefrence.rizzGyatt = true;
             StartCoroutine("destroyRail");
 
 
@@ -102,13 +102,14 @@ public class RailStick15 : MonoBehaviour
         if (railGrind == true)
         {
 
+           
 
 
             scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, (scriptRefrence.horizontalVelocity * -0.26795f));
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;
-                scriptRefrence.enabled = true;
+                scriptRefrence.rizzGyatt = true;
                 scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
                 scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
                 StartCoroutine("tempDestroyRail");
@@ -161,4 +162,5 @@ public class RailStick15 : MonoBehaviour
         yield return new WaitForSeconds(15f);
         Destroy(this.gameObject);
     }
+    
 }

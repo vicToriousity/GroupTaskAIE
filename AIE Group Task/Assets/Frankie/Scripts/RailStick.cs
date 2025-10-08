@@ -13,13 +13,13 @@ public class RailStick : MonoBehaviour
     private bool railGrind;
     public GameObject playerObject;
     public GameObject adamObject;
-    
+   
 
     //jump off rail
     public float railJumpBurstRight = 5f;
     public float railJumpBurstUp = 15f;
-    [SerializeField]
-    public bool boosted;
+   
+ 
 
 
     //combo stuff
@@ -47,7 +47,8 @@ public class RailStick : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
         scriptRefrence = playerObject.GetComponent<Move>();
         adamObject = GameObject.FindGameObjectWithTag("EventSyatumrizz");
-        
+        //groundCheckGO = GameObject.FindGameObjectWithTag("groundCheck");
+       // groundCheck = groundCheckGO.GetComponent<Transform>();
         aDScore = adamObject.GetComponent<Adamo_Score>();
     }
 
@@ -63,7 +64,7 @@ public class RailStick : MonoBehaviour
 
             //can add rotate sprite in here if needed
 
-            scriptRefrence.enabled = false;
+            scriptRefrence.rizzGyatt = false;
             railGrind = true;
 
             //start coroutine to time
@@ -88,14 +89,17 @@ public class RailStick : MonoBehaviour
             railCollider.enabled = false;
             railGrind = false;
       
-            scriptRefrence.enabled = true;
+            scriptRefrence.rizzGyatt = true;
 
             StartCoroutine("destroyRail");
         }
     }
 
-    private void Update()
+    void Update()
     {
+
+        
+        
         if (railGrind == true)
         {
            
@@ -105,14 +109,15 @@ public class RailStick : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;
-                scriptRefrence.enabled = true;
-                if (boosted == false)
+                scriptRefrence.rizzGyatt = true;
+                if (scriptRefrence.boosted == false)
                 {
                     scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
                     scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
+                    scriptRefrence.boosted = true;
                 }
                 Debug.Log(comboScore);
-                boosted = true;
+                
                 Destroy(railCollider);
             }
             
@@ -154,7 +159,8 @@ public class RailStick : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Destroy(this.gameObject);   
     }
-
+  
+    
 
 }
    
