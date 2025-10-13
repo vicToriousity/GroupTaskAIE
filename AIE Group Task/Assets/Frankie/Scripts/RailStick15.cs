@@ -1,25 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
 
-public class RailStick : MonoBehaviour
+public class RailStick15 : MonoBehaviour
 {
     //basic stuff
     public Collider2D railCollider;
     private bool railGrind;
     public GameObject playerObject;
     public GameObject adamObject;
-   
 
     //jump off rail
-    public float railJumpBurstRight = 5f;
-    public float railJumpBurstUp = 15f;
-   
- 
+    public float railJumpBurstRight = 1f;
+    public float railJumpBurstUp = 1f;
 
 
     //combo stuff
@@ -27,11 +20,11 @@ public class RailStick : MonoBehaviour
     private bool starting = true;
     public int comboScore = 0;
     public float finalScore = 0;
-    
 
     //maths
-    //angle is 35
-    
+    //angle is 0
+    //varC = 20;
+
 
 
     //scriptrefences
@@ -45,11 +38,10 @@ public class RailStick : MonoBehaviour
     {
         railCollider = GetComponent<Collider2D>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
-        scriptRefrence = playerObject.GetComponent<Move>();
         adamObject = GameObject.FindGameObjectWithTag("EventSyatumrizz");
-        //groundCheckGO = GameObject.FindGameObjectWithTag("groundCheck");
-       // groundCheck = groundCheckGO.GetComponent<Transform>();
+        scriptRefrence = playerObject.GetComponent<Move>();
         aDScore = adamObject.GetComponent<Adamo_Score>();
+        railCollider.isTrigger = true;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -69,63 +61,68 @@ public class RailStick : MonoBehaviour
 
             //start coroutine to time
             // grind track checks if exit
-            Debug.Log("enter2");
 
+
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Rail15"))
+        {
+            railCollider.isTrigger = false;
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
+
+            // run math script foir score
             finalScore = comboScore * scriptRefrence.horizontalVelocity;
             aDScore.Score = aDScore.Score + finalScore;
-
+            aDScore.comboCalc = true;
             Debug.Log("combo" + comboScore);
             Debug.Log("final " + finalScore);
             Debug.Log("velocity" + scriptRefrence.horizontalVelocity);
             finalScore = 0;
             comboScore = 0;
-            aDScore.comboCalc = true;
-            railCollider.enabled = false;
+            railCollider.isTrigger = true;
             railGrind = false;
-      
             scriptRefrence.rizzGyatt = true;
-
             StartCoroutine("destroyRail");
+
+
         }
     }
 
-    void Update()
+    private void Update()
     {
-
-        
-        
         if (railGrind == true)
         {
+
            
-            
-            
-            scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, (scriptRefrence.horizontalVelocity * 0.70021f));
+
+
+            scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, (scriptRefrence.horizontalVelocity * -0.26795f));
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;
                 scriptRefrence.rizzGyatt = true;
-                if (scriptRefrence.boosted == false)
-                {
-                    scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
-                    scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
-                    scriptRefrence.boosted = true;
-                }
-                Debug.Log(comboScore);
-                
-                Destroy(railCollider);
+                scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
+                scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
+                StartCoroutine("tempDestroyRail");
+                railGrind = false;
+                railCollider.isTrigger = true;
+
             }
-            
+
             if (starting == true && Input.GetKeyDown(KeyCode.A))
             {
-                starting= false;
+                starting = false;
                 pressA = true;
-                
+
                 comboScore += 1;
 
             }
@@ -133,37 +130,37 @@ public class RailStick : MonoBehaviour
             if (starting == true && Input.GetKeyDown(KeyCode.D))
             {
                 starting = false;
-                
+
                 pressA = false;
                 comboScore += 1;
             }
-            if(starting == false && Input.GetKeyDown(KeyCode.A) && pressA == false)
+            if (starting == false && Input.GetKeyDown(KeyCode.A) && pressA == false)
             {
-                
+
                 pressA = true;
                 comboScore += 1;
             }
-            if (starting== false && Input.GetKeyDown(KeyCode.D) && pressA == true)
+            if (starting == false && Input.GetKeyDown(KeyCode.D) && pressA == true)
             {
-                
+
                 pressA = false;
                 comboScore += 1;
             }
 
-        }        
-      
+        }
+
+    }
+    IEnumerator tempDestroyRail()
+    {
+        railCollider.isTrigger = true;
+        yield return new WaitForSeconds(0.5f);
+        railCollider.isTrigger = false;
     }
     IEnumerator destroyRail()
     {
-        
-        yield return new WaitForSeconds(5f);
-        Destroy(this.gameObject);   
+
+        yield return new WaitForSeconds(15f);
+        Destroy(this.gameObject);
     }
-  
     
-
 }
-   
-
-   
-

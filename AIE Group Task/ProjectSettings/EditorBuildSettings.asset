@@ -17,5 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Frankie.unity
     guid: 9bf673709bba07747833b2d03f0f95c6
+  - enabled: 1
+    path: Assets/Scenes/Moriiii.unity
+    guid: 232a4f0557593b344807418ac4dcf73c
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 3efb4b44eb47c9c4dad8b77486e9722a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 30441355e41a9cf4c90b1a4e9acc55b0, type: 3}
