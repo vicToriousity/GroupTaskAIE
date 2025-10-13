@@ -9,6 +9,7 @@ public class Adamo_Score : MonoBehaviour
    
     public TMP_Text speedText;
     public TMP_Text scoreText;
+    public TMP_Text scoreLetterText;
     public int TrickCount = 0;
     public float ComboScore = 0;
     public float Score = 0;
@@ -17,10 +18,18 @@ public class Adamo_Score : MonoBehaviour
     public bool comboCalc = false;
     public GameObject speedTextObj;
     public GameObject scoreTextObj;
-
+    public GameObject scoreLetterTextObj;
     public GameObject playerObject;
     public Move scriptRefrence;
 
+    public float lameBar = 20f;
+    public float coolBar = 50f;
+    public float rockinBar = 100f;
+    public float ballerBar = 150f;
+    public float grindBar = 200f;
+    public float punkBar = 250f;
+
+    public int rankNO = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +43,9 @@ public class Adamo_Score : MonoBehaviour
 
         scoreTextObj = GameObject.FindGameObjectWithTag("scoreDist");
         scoreText = scoreTextObj.GetComponent<TMP_Text>();
+
+        scoreLetterTextObj = GameObject.FindGameObjectWithTag("scoreLetterDist");
+        scoreLetterText = scoreLetterTextObj.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -95,7 +107,36 @@ public class Adamo_Score : MonoBehaviour
         }
 
 
-
+        if (Score >= lameBar & Score < coolBar)
+        {
+            scoreLetterText.text = ("Rank: Lame..");
+            rankNO = 1;
+        }
+        if (Score >= coolBar & Score < rockinBar)
+        {
+            scoreLetterText.text = ("Rank: Cool");
+            rankNO = 2;
+        }
+        if (Score >= rockinBar & Score < ballerBar)
+        {
+            scoreLetterText.text = ("Rank: Rockin");
+            rankNO = 3;
+        }
+        if (Score >= ballerBar & Score < grindBar)
+        {
+            scoreLetterText.text = ("Rank: Baller!");
+            rankNO = 4;
+        }
+        if (Score >= grindBar & Score < punkBar)
+        {
+            scoreLetterText.text = ("Rank: Grindtastic!!");
+            rankNO = 5;
+        }
+        if (Score >= punkBar)
+        {
+            scoreLetterText.text = ("Rank: PUNK AS HELL!!!");
+            rankNO = 6;
+        }
 
     }
 }

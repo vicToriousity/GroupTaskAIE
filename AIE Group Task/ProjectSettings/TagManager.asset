@@ -11,6 +11,9 @@ TagManager:
   - speedDisp
   - scoreDist
   - groundCheck
+  - scoreLetterDist
+  - RankFinishText
+  - RankScoreText
   layers:
   - Default
   - TransparentFX
