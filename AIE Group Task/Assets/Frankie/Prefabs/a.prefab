@@ -101,13 +101,8 @@ MonoBehaviour:
   railCollider: {fileID: 0}
   playerObject: {fileID: 0}
   adamObject: {fileID: 0}
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  railJumpBurstRight: 5
-  railJumpBurstUp: 15
-  boosted: 0
+  railJumpBurstRight: 1
+  railJumpBurstUp: 4
   comboScore: 0
   finalScore: 0
   scriptRefrence: {fileID: 8050556386538825450, guid: 7eb4bb965b4152b439a434de10014d6d, type: 3}
