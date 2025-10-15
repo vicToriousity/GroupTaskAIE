@@ -11,8 +11,8 @@ public class RailStick15 : MonoBehaviour
     public GameObject adamObject;
 
     //jump off rail
-    public float railJumpBurstRight = 1f;
-    public float railJumpBurstUp = 1f;
+    public float railJumpBurstRight = 3f;
+    public float railJumpBurstUp = 8f;
 
 
     //combo stuff

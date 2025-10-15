@@ -16,8 +16,8 @@ public class RailStick : MonoBehaviour
    
 
     //jump off rail
-    public float railJumpBurstRight = 5f;
-    public float railJumpBurstUp = 15f;
+    public float railJumpBurstRight = 1f;
+    public float railJumpBurstUp = 4f;
    
  
 
