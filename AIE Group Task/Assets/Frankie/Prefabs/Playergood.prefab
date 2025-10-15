@@ -339,8 +339,8 @@ MonoBehaviour:
   jumppower: 12
   GrindRail: {fileID: 6890137975283460208, guid: a2d415d25a42b8143bf06e9433ff8f4c, type: 3}
   railSpawn: {fileID: 2669872655271174144}
-  railCooldown: 1
-  railCooldownforTimer: 1
+  railCooldown: 1.75
+  railCooldownforTimer: 1.75
   cooldownObject: {fileID: 0}
   rizzGyatt: 1
   boosted: 0

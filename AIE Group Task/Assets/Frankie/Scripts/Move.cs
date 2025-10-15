@@ -10,15 +10,15 @@ public class Move : MonoBehaviour
     public TMP_Text cooldownText;
 
 
-    public float passivemovement = 6f;
-    public float speedlean = 4f;
+    public float passivemovement = 9f;
+    public float speedlean = 9f;
     public float leanLimit = 6f;
-    public float upperLimit = 10f;
-    public float jumppower = 4f;
+    public float upperLimit = 15f;
+    public float jumppower = 12f;
     public GameObject GrindRail;
     public GameObject railSpawn;
-    public float railCooldown = 1f;
-    public float railCooldownforTimer = 1f;
+    public float railCooldown = 1.75f;
+    public float railCooldownforTimer = 1.75f;
     public GameObject cooldownObject;
     public bool rizzGyatt = true;
     
@@ -154,7 +154,7 @@ public class Move : MonoBehaviour
         cooldownRailSpawnTimer = true;
         
         yield return new WaitForSeconds(railCooldown);
-        railCooldownforTimer = 1f;
+        railCooldownforTimer = 1.75f;
         cooldownRailSpawnTimer = false;
 
     }
