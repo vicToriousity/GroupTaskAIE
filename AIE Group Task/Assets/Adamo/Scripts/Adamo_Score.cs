@@ -109,32 +109,32 @@ public class Adamo_Score : MonoBehaviour
 
         if (Score >= lameBar & Score < coolBar)
         {
-            scoreLetterText.text = ("Rank: Lame..");
+            scoreLetterText.text = ("Rank: E");
             rankNO = 1;
         }
         if (Score >= coolBar & Score < rockinBar)
         {
-            scoreLetterText.text = ("Rank: Cool");
+            scoreLetterText.text = ("Rank: C");
             rankNO = 2;
         }
         if (Score >= rockinBar & Score < ballerBar)
         {
-            scoreLetterText.text = ("Rank: Rockin");
+            scoreLetterText.text = ("Rank: B");
             rankNO = 3;
         }
         if (Score >= ballerBar & Score < grindBar)
         {
-            scoreLetterText.text = ("Rank: Baller!");
+            scoreLetterText.text = ("Rank: A");
             rankNO = 4;
         }
         if (Score >= grindBar & Score < punkBar)
         {
-            scoreLetterText.text = ("Rank: Grindtastic!!");
+            scoreLetterText.text = ("Rank: S");
             rankNO = 5;
         }
         if (Score >= punkBar)
         {
-            scoreLetterText.text = ("Rank: PUNK AS HELL!!!");
+            scoreLetterText.text = ("Rank: PUNK!");
             rankNO = 6;
         }
 

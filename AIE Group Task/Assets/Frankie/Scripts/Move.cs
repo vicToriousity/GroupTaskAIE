@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class Move : MonoBehaviour
@@ -21,10 +22,13 @@ public class Move : MonoBehaviour
     public float railCooldownforTimer = 1.75f;
     public GameObject cooldownObject;
     public bool rizzGyatt = true;
+    public Image overlay;
+    public GameObject overlayObject;
     
 
+
     private bool oneSecond = true;
-    private bool cooldownRailSpawn = true;
+    public bool cooldownRailSpawn = true;
     private bool cooldownRailSpawnTimer = false;
     public bool boosted = false;
 
@@ -41,7 +45,10 @@ public class Move : MonoBehaviour
     {
         cooldownObject = GameObject.FindGameObjectWithTag("Cooldownfrankie");
         cooldownText = cooldownObject.GetComponent<TMP_Text>();
-
+        
+        overlayObject = GameObject.FindGameObjectWithTag("Overlayobject");
+        overlay = overlayObject.GetComponent<Image>();
+        overlay.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -51,7 +58,9 @@ public class Move : MonoBehaviour
         {
             boosted = false;
         }
-
+        
+        
+           
 
         if (cooldownRailSpawn == false)
         {
@@ -59,9 +68,12 @@ public class Move : MonoBehaviour
             {
                 StartCoroutine("cooldownDisp");
             }
+            overlay.fillAmount = 0;
 
-            cooldownText.text = ("Cooldown: " + ((railCooldownforTimer -= Time.deltaTime).ToString("F2")));
-            Debug.Log("dointthetuinh");
+            overlay.fillAmount = railCooldownforTimer / railCooldown;
+
+            cooldownText.text = ((railCooldownforTimer -= Time.deltaTime).ToString("F2"));
+            //Debug.Log("dointthetuinh");
         }
 
 
@@ -156,6 +168,7 @@ public class Move : MonoBehaviour
         yield return new WaitForSeconds(railCooldown);
         railCooldownforTimer = 1.75f;
         cooldownRailSpawnTimer = false;
+        overlay.fillAmount = 0;
 
     }
 
