@@ -20,7 +20,7 @@ public class LoseCondition : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+            SceneManager.LoadScene("LevelOneFail", LoadSceneMode.Single);
         }
         
     }
