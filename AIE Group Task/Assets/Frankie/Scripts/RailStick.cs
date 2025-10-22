@@ -25,8 +25,8 @@ public class RailStick : MonoBehaviour
     //combo stuff
     private bool pressA;
     private bool starting = true;
-    public int comboScore = 0;
-    public float finalScore = 0;
+    private int comboScore = 0;
+    private float finalScore = 0;
     
 
     //maths
@@ -116,8 +116,15 @@ public class RailStick : MonoBehaviour
                     scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
                     scriptRefrence.boosted = true;
                 }
-                Debug.Log(comboScore);
-                
+                //Debug.Log(comboScore);
+                finalScore = (comboScore * scriptRefrence.horizontalVelocity) / 1.5f;
+                aDScore.Score = aDScore.Score + finalScore;
+                aDScore.comboCalc = true;
+                //Debug.Log("combo" + comboScore);
+                //Debug.Log("final " + finalScore);
+                //Debug.Log("velocity" + scriptRefrence.horizontalVelocity);
+                finalScore = 0;
+                comboScore = 0;
                 Destroy(railCollider);
             }
             

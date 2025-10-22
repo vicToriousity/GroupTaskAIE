@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 2306635381173582956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.6, y: 7.7, z: 0}
+  m_LocalPosition: {x: 49.34, y: 7.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -976,12 +976,12 @@ MonoBehaviour:
   scoreLetterTextObj: {fileID: 0}
   playerObject: {fileID: 0}
   scriptRefrence: {fileID: 0}
-  lameBar: 20
-  coolBar: 50
-  rockinBar: 100
-  ballerBar: 150
-  grindBar: 200
-  punkBar: 250
+  lameBar: 1250
+  coolBar: 2500
+  rockinBar: 3000
+  ballerBar: 3500
+  grindBar: 4000
+  punkBar: 5000
   rankNO: 0
 --- !u!1 &7506674563499146872
 GameObject:
@@ -1115,7 +1115,7 @@ Transform:
   m_GameObject: {fileID: 8304849484870228307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.41, y: -0, z: -10}
+  m_LocalPosition: {x: 14.51, y: -0, z: -10}
   m_LocalScale: {x: 0.91125005, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1157,7 +1157,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.7040954
+  orthographic size: 11.250307
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
