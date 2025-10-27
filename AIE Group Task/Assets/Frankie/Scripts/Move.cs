@@ -24,7 +24,7 @@ public class Move : MonoBehaviour
     public bool rizzGyatt = true;
     public Image overlay;
     public GameObject overlayObject;
-    
+     
 
 
     private bool oneSecond = true;
@@ -49,18 +49,21 @@ public class Move : MonoBehaviour
         overlayObject = GameObject.FindGameObjectWithTag("Overlayobject");
         overlay = overlayObject.GetComponent<Image>();
         overlay.fillAmount = 0;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+      
         if (IsGrounded())
         {
             boosted = false;
+           
         }
         
         
-           
+        
 
         if (cooldownRailSpawn == false)
         {
@@ -110,7 +113,7 @@ public class Move : MonoBehaviour
                 if (horizontalVelocity <= upperLimit && oneSecond == true)
                 {
                     StartCoroutine("Smallpush");
-                    StartCoroutine("Secondtimer");
+                    
                 }
 
 
@@ -133,20 +136,16 @@ public class Move : MonoBehaviour
 
     IEnumerator Smallpush ()
     {
-        
+        oneSecond = false;
+        groundCheck.GetComponent<AudioSource>().Play();
         rb.AddForce(transform.right * speedlean, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.75f);
-        
-        
+        oneSecond = true;
+
+
     }
 
-    IEnumerator Secondtimer ()
-    {
-        oneSecond = false;
-        
-        yield return new WaitForSeconds(0.75f);
-        oneSecond = true;
-    }
+   
 
     IEnumerator CooldownRailTimer()
     {
