@@ -79,6 +79,7 @@ public class Adamo_Score : MonoBehaviour
         {
             TrickCount++;
             cooldown = 0.5f;
+
         }
 
         if (scriptRefrence.IsGrounded())
