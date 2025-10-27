@@ -18,8 +18,8 @@ public class RailStickFlat : MonoBehaviour
     //combo stuff
     private bool pressA;
     private bool starting = true;
-    public int comboScore = 0;
-    public float finalScore = 0;
+    private int comboScore = 0;
+    private float finalScore = 0;
 
     //maths
     //angle is 0
@@ -100,8 +100,15 @@ public class RailStickFlat : MonoBehaviour
                 scriptRefrence.rizzGyatt = true;
                 scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
                 scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
-               
-                
+                finalScore = (comboScore * scriptRefrence.horizontalVelocity) / 1.5f;
+                aDScore.Score = aDScore.Score + finalScore;
+                aDScore.comboCalc = true;
+                //Debug.Log("combo" + comboScore);
+                //Debug.Log("final " + finalScore);
+                //Debug.Log("velocity" + scriptRefrence.horizontalVelocity);
+                finalScore = 0;
+                comboScore = 0;
+                railCollider.enabled = false;
             }
 
             if (starting == true && Input.GetKeyDown(KeyCode.A))

@@ -44,7 +44,15 @@ public class FinishLevel : MonoBehaviour
     }
     public IEnumerator Deload()
     {
-        SceneManager.LoadScene("LevelOneFinish", LoadSceneMode.Additive);
+        if (aDScore.rankNO >=2)
+        {
+            SceneManager.LoadScene("LevelOneFinish", LoadSceneMode.Additive);
+        } 
+        else
+        {
+            SceneManager.LoadScene("LevelOneFail", LoadSceneMode.Additive);
+        }
+        
         yield return null;
         rankTextObj = GameObject.FindGameObjectWithTag("RankFinishText");
         rankText = rankTextObj.GetComponent<TMP_Text>();

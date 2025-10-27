@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Adamo_Score : MonoBehaviour
@@ -22,12 +19,12 @@ public class Adamo_Score : MonoBehaviour
     public GameObject playerObject;
     public Move scriptRefrence;
 
-    public float lameBar = 20f;
-    public float coolBar = 50f;
-    public float rockinBar = 100f;
-    public float ballerBar = 150f;
-    public float grindBar = 200f;
-    public float punkBar = 250f;
+    public float lameBar = 1250f;
+    public float coolBar = 2500f;
+    public float rockinBar = 3000f;
+    public float ballerBar = 3500f;
+    public float grindBar = 4000f;
+    public float punkBar = 5000f;
 
     public int rankNO = 0;
 
@@ -66,19 +63,16 @@ public class Adamo_Score : MonoBehaviour
             finalTrickCounter = 2;
         }
 
-        else if (TrickCount >= 4 & TrickCount < 6)
+        else 
         {
             finalTrickCounter = 4;
         }
 
-        else
-        {
-            finalTrickCounter = 16;
-        }
+      
 
         speedText.text = ("Speed: " + (scriptRefrence.horizontalVelocity.ToString("F2")));
 
-        ComboScore = ((TrickCount * finalTrickCounter) * scriptRefrence.horizontalVelocity);
+        ComboScore = (20 * finalTrickCounter) ;
 
 
         if (Input.GetKeyDown(KeyCode.A) && scriptRefrence.IsGrounded() == false && cooldown <= 0)
@@ -109,32 +103,32 @@ public class Adamo_Score : MonoBehaviour
 
         if (Score >= lameBar & Score < coolBar)
         {
-            scoreLetterText.text = ("Rank: Lame..");
+            scoreLetterText.text = ("Rank: E");
             rankNO = 1;
         }
         if (Score >= coolBar & Score < rockinBar)
         {
-            scoreLetterText.text = ("Rank: Cool");
+            scoreLetterText.text = ("Rank: C");
             rankNO = 2;
         }
         if (Score >= rockinBar & Score < ballerBar)
         {
-            scoreLetterText.text = ("Rank: Rockin");
+            scoreLetterText.text = ("Rank: B");
             rankNO = 3;
         }
         if (Score >= ballerBar & Score < grindBar)
         {
-            scoreLetterText.text = ("Rank: Baller!");
+            scoreLetterText.text = ("Rank: A");
             rankNO = 4;
         }
         if (Score >= grindBar & Score < punkBar)
         {
-            scoreLetterText.text = ("Rank: Grindtastic!!");
+            scoreLetterText.text = ("Rank: S");
             rankNO = 5;
         }
         if (Score >= punkBar)
         {
-            scoreLetterText.text = ("Rank: PUNK AS HELL!!!");
+            scoreLetterText.text = ("Rank: PUNK!");
             rankNO = 6;
         }
 
