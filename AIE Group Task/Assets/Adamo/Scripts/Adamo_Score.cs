@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Adamo_Score : MonoBehaviour
 {
+    public Animator Animator;
    
     public TMP_Text speedText;
     public TMP_Text scoreText;
@@ -77,13 +78,14 @@ public class Adamo_Score : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A) && scriptRefrence.IsGrounded() == false && cooldown <= 0)
         {
+            Animator.SetBool("IsTricking", true);
             TrickCount++;
             cooldown = 0.5f;
         }
 
         if (scriptRefrence.IsGrounded())
         {
-
+            Animator.SetBool("IsTricking", false);
             TrickCount = 0;
             Score = Score + ComboScore;
             scoreText.text = ("Score: " + Score.ToString("F0"));
