@@ -150,8 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35d796eb76bdbb641a1a0b53d756347d
-      internalID: -482131584
+      spriteID: 261bed9fdea91384ab0df703da17c7d9
+      internalID: 9436912
       vertices: []
       indices: 
       edges: []
@@ -171,8 +171,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26c56cd6bae47104d9117c10f51e34a9
-      internalID: 377170527
+      spriteID: 5b9f5557a3d4be342ac065defbe36620
+      internalID: -1027282314
       vertices: []
       indices: 
       edges: []
@@ -188,8 +188,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SweetFlips-export_0: -482131584
-      SweetFlips-export_1: 377170527
+      SweetFlips-export_0: 9436912
+      SweetFlips-export_1: -1027282314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

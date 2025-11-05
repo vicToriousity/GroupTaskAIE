@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4543726712252354662}
   - component: {fileID: 4783149389281684706}
   - component: {fileID: 3818472159810241707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: a
-  m_TagString: Untagged
+  m_TagString: Rail15
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,8 +103,6 @@ MonoBehaviour:
   adamObject: {fileID: 0}
   railJumpBurstRight: 1
   railJumpBurstUp: 4
-  comboScore: 0
-  finalScore: 0
   scriptRefrence: {fileID: 8050556386538825450, guid: 7eb4bb965b4152b439a434de10014d6d, type: 3}
   aDScore: {fileID: 0}
 --- !u!61 &3818472159810241707

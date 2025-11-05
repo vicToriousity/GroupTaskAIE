@@ -10,6 +10,7 @@ public class Move : MonoBehaviour
 {
     public TMP_Text cooldownText;
 
+    public Animator animator;
 
     public float passivemovement = 9f;
     public float speedlean = 9f;
