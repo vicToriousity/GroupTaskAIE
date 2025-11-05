@@ -134,5 +134,6 @@ public class Adamo_Score : MonoBehaviour
             rankNO = 6;
         }
 
+
     }
 }
