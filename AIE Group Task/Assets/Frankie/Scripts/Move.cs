@@ -24,8 +24,12 @@ public class Move : MonoBehaviour
     public bool rizzGyatt = true;
     public Image overlay;
     public GameObject overlayObject;
-     
 
+    public AudioSource skatesPush;
+    public AudioSource skatesPassive;
+    public AudioSource air;
+    public AudioSource sonk;
+   
 
     private bool oneSecond = true;
     public bool cooldownRailSpawn = true;
@@ -34,7 +38,7 @@ public class Move : MonoBehaviour
 
 
 
-    [SerializeField] public Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] public float horizontalVelocity;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -49,7 +53,14 @@ public class Move : MonoBehaviour
         overlayObject = GameObject.FindGameObjectWithTag("Overlayobject");
         overlay = overlayObject.GetComponent<Image>();
         overlay.fillAmount = 0;
-        
+
+        AudioSource[] audioS = GetComponents<AudioSource>();
+        skatesPush = audioS[0];
+        skatesPassive = audioS[1];
+        air = audioS[2];
+        sonk = audioS[3];
+        air.Play();
+        sonk.Play();
     }
 
     // Update is called once per frame
@@ -59,9 +70,12 @@ public class Move : MonoBehaviour
         if (IsGrounded())
         {
             boosted = false;
-           
+            skatesPassive.Play();
         }
-        
+        else
+        {
+            skatesPassive.Stop();
+        }
         
         
 
@@ -78,12 +92,16 @@ public class Move : MonoBehaviour
             cooldownText.text = ((railCooldownforTimer -= Time.deltaTime).ToString("F2"));
             //Debug.Log("dointthetuinh");
         }
+        
+        horizontalVelocity = rb.velocity.x;
+
+        air.pitch = 0.5f + (horizontalVelocity/8);
 
 
         if (rizzGyatt == true)
         
         {
-            horizontalVelocity = rb.velocity.x;
+            
             if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
             {
 
@@ -101,22 +119,18 @@ public class Move : MonoBehaviour
             if (horizontalVelocity <= leanLimit && IsGrounded())
             {
                 rb.AddForce(transform.right * passivemovement);
+                
             }
 
             if (Input.GetKey(KeyCode.D) && IsGrounded())
             {
-
-
                 //transform.Translate(Vector2.right * Time.deltaTime * speedstart);, in loving memory of liv roswarne
-
 
                 if (horizontalVelocity <= upperLimit && oneSecond == true)
                 {
                     StartCoroutine("Smallpush");
                     
                 }
-
-
 
             }
         }
@@ -137,7 +151,7 @@ public class Move : MonoBehaviour
     IEnumerator Smallpush ()
     {
         oneSecond = false;
-        groundCheck.GetComponent<AudioSource>().Play();
+        skatesPush.Play();
         rb.AddForce(transform.right * speedlean, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.75f);
         oneSecond = true;
@@ -146,6 +160,7 @@ public class Move : MonoBehaviour
     }
 
    
+
 
     IEnumerator CooldownRailTimer()
     {

@@ -102,7 +102,7 @@ public class RailStick : MonoBehaviour
         
         if (railGrind == true)
         {
-           
+            Debug.Log("a");
             
             
             scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, (scriptRefrence.horizontalVelocity * 0.70021f));
