@@ -29,5 +29,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelOneFail.unity
     guid: a1c18fb238d7ffd40a3338ed0ded4df9
+  - enabled: 1
+    path: Assets/Scenes/LevelTwo.unity
+    guid: b427e3747a89dec4b804d15bb2275fa3
+  - enabled: 1
+    path: Assets/Scenes/FailScreen.unity
+    guid: ffa2019422002c74794720be1c7fa825
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 30441355e41a9cf4c90b1a4e9acc55b0, type: 3}

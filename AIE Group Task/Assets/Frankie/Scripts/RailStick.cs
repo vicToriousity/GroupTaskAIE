@@ -18,6 +18,7 @@ public class RailStick : MonoBehaviour
     //jump off rail
     public float railJumpBurstRight = 1f;
     public float railJumpBurstUp = 4f;
+    public float speeding;
    
  
 
@@ -57,7 +58,7 @@ public class RailStick : MonoBehaviour
         Debug.Log("enter");
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            speeding = scriptRefrence.horizontalVelocity;
 
             //t=s/v
 
@@ -77,12 +78,12 @@ public class RailStick : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            finalScore = comboScore * scriptRefrence.horizontalVelocity;
+            finalScore = comboScore * speeding;
             aDScore.Score = aDScore.Score + finalScore;
 
             Debug.Log("combo" + comboScore);
             Debug.Log("final " + finalScore);
-            Debug.Log("velocity" + scriptRefrence.horizontalVelocity);
+            Debug.Log("velocity" + speeding);
             finalScore = 0;
             comboScore = 0;
             aDScore.comboCalc = true;
@@ -98,14 +99,14 @@ public class RailStick : MonoBehaviour
     void Update()
     {
 
-        
-        
+       
+
         if (railGrind == true)
         {
-            Debug.Log("a");
+           
             
             
-            scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, (scriptRefrence.horizontalVelocity * 0.70021f));
+            scriptRefrence.rb.velocity = new Vector2(speeding, (speeding * 0.70021f));
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;
@@ -117,7 +118,7 @@ public class RailStick : MonoBehaviour
                     scriptRefrence.boosted = true;
                 }
                 //Debug.Log(comboScore);
-                finalScore = (comboScore * scriptRefrence.horizontalVelocity) / 1.5f;
+                finalScore = (comboScore * speeding) / 1.5f;
                 aDScore.Score = aDScore.Score + finalScore;
                 aDScore.comboCalc = true;
                 //Debug.Log("combo" + comboScore);

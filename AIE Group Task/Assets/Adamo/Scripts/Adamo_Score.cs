@@ -20,12 +20,12 @@ public class Adamo_Score : MonoBehaviour
     public GameObject playerObject;
     public Move scriptRefrence;
 
-    public float lameBar = 1250f;
-    public float coolBar = 2500f;
-    public float rockinBar = 3000f;
-    public float ballerBar = 3500f;
-    public float grindBar = 4000f;
-    public float punkBar = 5000f;
+    float lameBar = 1000f;
+    float coolBar = 2000f;
+    float rockinBar = 2250f;
+    float ballerBar = 2500f;
+    float grindBar = 2750f;
+    float punkBar = 3250f;
 
     public int rankNO = 0;
 
