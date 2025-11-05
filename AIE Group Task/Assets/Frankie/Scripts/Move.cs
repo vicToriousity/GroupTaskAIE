@@ -38,7 +38,7 @@ public class Move : MonoBehaviour
 
 
 
-    [SerializeField] public Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] public float horizontalVelocity;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
