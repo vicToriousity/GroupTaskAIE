@@ -13,7 +13,7 @@ public class RailStick15 : MonoBehaviour
     //jump off rail
     float railJumpBurstRight = 3f;
     float railJumpBurstUp = 8f;
-
+    public float speedinginging;
 
     //combo stuff
     private bool pressA;
@@ -50,7 +50,7 @@ public class RailStick15 : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
 
-
+            speedinginging = scriptRefrence.horizontalVelocity;
             //t=s/v
 
 
@@ -80,7 +80,7 @@ public class RailStick15 : MonoBehaviour
 
 
             // run math script foir score
-            finalScore = (comboScore * scriptRefrence.horizontalVelocity) / 1.5f;
+            finalScore = (comboScore * speedinginging) / 1.5f;
             aDScore.Score = aDScore.Score + finalScore;
             aDScore.comboCalc = true;
             //Debug.Log("combo" + comboScore);
@@ -105,7 +105,7 @@ public class RailStick15 : MonoBehaviour
            
 
 
-            scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity, (scriptRefrence.horizontalVelocity * -0.26795f));
+            scriptRefrence.rb.velocity = new Vector2(speedinginging, (speedinginging * -0.26795f));
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;

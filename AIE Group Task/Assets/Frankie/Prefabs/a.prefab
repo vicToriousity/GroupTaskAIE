@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6890137975283460208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.30070576, w: 0.953717}
-  m_LocalPosition: {x: 7.4395, y: -1.465, z: 0}
+  m_LocalPosition: {x: 7.5813, y: -1.6776, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,13 +74,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9803922, g: 0.7607844, b: 0.29411766, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 14.989368, y: 0.9347722}
+  m_Size: {x: 15.001055, y: 0.42376167}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,6 +103,7 @@ MonoBehaviour:
   adamObject: {fileID: 0}
   railJumpBurstRight: 1
   railJumpBurstUp: 4
+  speeding: 0
   scriptRefrence: {fileID: 8050556386538825450, guid: 7eb4bb965b4152b439a434de10014d6d, type: 3}
   aDScore: {fileID: 0}
 --- !u!61 &3818472159810241707
@@ -137,16 +138,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: 0}
+  m_Offset: {x: 0, y: 0.012273304}
   m_SpriteTilingProperty:
     border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 14.989368, y: 0.9347722}
+    newSize: {x: 15.001055, y: 0.42376167}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15, y: 1}
+  m_Size: {x: 15, y: 0.5088303}
   m_EdgeRadius: 0

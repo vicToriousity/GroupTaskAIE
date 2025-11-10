@@ -13,7 +13,7 @@ public class RailStickFlat : MonoBehaviour
     //jump off rail
     float railJumpBurstRight = 3f;
     float railJumpBurstUp = 8f;
-
+    public float speedinging;
 
     //combo stuff
     private bool pressA;
@@ -48,7 +48,7 @@ public class RailStickFlat : MonoBehaviour
         Debug.Log("enter");
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            speedinging = scriptRefrence.horizontalVelocity;
 
             //t=s/v
 
@@ -71,12 +71,12 @@ public class RailStickFlat : MonoBehaviour
           
           
             // run math script foir score
-            finalScore = comboScore * scriptRefrence.horizontalVelocity;
+            finalScore = comboScore * speedinging;
             aDScore.Score = aDScore.Score + finalScore;
             aDScore.comboCalc = true;
             Debug.Log("combo" + comboScore);
             Debug.Log("final " + finalScore);
-            Debug.Log("velocity" + scriptRefrence.horizontalVelocity);
+            Debug.Log("velocity" + speedinging);
             finalScore = 0;
             comboScore = 0;
             railCollider.enabled = false;
@@ -93,14 +93,14 @@ public class RailStickFlat : MonoBehaviour
 
 
 
-            scriptRefrence.rb.velocity = new Vector2(scriptRefrence.horizontalVelocity , 0);
+            scriptRefrence.rb.velocity = new Vector2(speedinging , 0);
             if (Input.GetKeyDown(KeyCode.S))
             {
                 starting = true;
                 scriptRefrence.rizzGyatt = true;
                 scriptRefrence.rb.AddForce(playerObject.transform.right * railJumpBurstRight, ForceMode2D.Impulse);
                 scriptRefrence.rb.AddForce(playerObject.transform.up * railJumpBurstUp, ForceMode2D.Impulse);
-                finalScore = (comboScore * scriptRefrence.horizontalVelocity) / 1.5f;
+                finalScore = (comboScore * speedinging) / 1.5f;
                 aDScore.Score = aDScore.Score + finalScore;
                 aDScore.comboCalc = true;
                 //Debug.Log("combo" + comboScore);
